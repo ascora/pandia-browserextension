@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+	"name": "PandiaBrowserExtension",
+	"version": "1.0",
+	
+	"description": "Sends Page to PandiaHub",
+	 
+	"icons": 
+	{
+		"48": "icons/logo_pandia.png",
+		"96": "icons/logo_pandia96.png"
+    },
+	
+	"permissions": 
+	[
+		"activeTab",
+		"tabs"
+	],
+
+	"browser_action": 
+	{
+		"default_icon": "icons/logo_pandia.png",
+		"default_title": "Pandia",
+		"default_popup": "popup/ResponsePopup.html"
+	},
+
+	"background": 
+	{
+		"scripts": ["pandiaextension.js"]
+	}	
+}
