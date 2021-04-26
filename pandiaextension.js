@@ -48,16 +48,20 @@ function handleUpdated(tabId, changeInfo, tabInfo)
 	
 	
  
-	var token ='1mnvF1nXd3XpEIiUM45HQnkKtLDj5bZeM1SH8ltqnOJCyImlg0';
+	var token ='Y75Y9F0fOC59fPZe1cdCbBw0LJtMX4ZWOdiO2xrNLihUiWUOKn';
 	var sideId =btoa(resultclean);
 	fetch(`https://pandia-hub-api.ascora.eu/v1/policies/websites/${sideId}?lang=de&access_token=${token}`).then(r => r.text()).then(result => {
-		if(result.match(`.*true.*`) == null)
+		if(result.match(`.*POLICY_UNAVAILABLE.*`) != null)
 		{
 			browser.browserAction.setIcon({path: '../icons/logo_pandia_red.png', tabId: tabId});			
 		}
-		else
+		else if(result.match(`.*POLICY_AVAILABLE.*`) != null)
 		{
 			browser.browserAction.setIcon({path: '../icons/logo_pandia_green.png', tabId: tabId});
+		}
+		else
+		{
+			browser.browserAction.setIcon({path: '../icons/logo_pandia_yellow.png', tabId: tabId});
 		}
 	})		
 }
